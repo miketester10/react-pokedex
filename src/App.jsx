@@ -99,9 +99,6 @@ function App() {
         setPokemons((prev) => [...prev, ...array_pokemons_scroll]);
         setPokemonsTemp((prev) => [...prev, ...array_pokemons_scroll]);
 
-        if (pokemons.length > max) {
-          setHasMore(false);
-        }
       }, 1000);
 
       return newCount;
