@@ -15,6 +15,7 @@ import axios from "axios";
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonsTemp, setPokemonsTemp] = useState([]); // array pokemon temporaneo mi serve per reinizializzare l'array dei pokemon (pokemons) dopo il filtraggio/ricerca
+  const [allPokemons, setAllPokemons] = useState([]); // array completo con tutti i pokemon ed i loro dettagli
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(true);
   const [wait, setWait] = useState(true);
@@ -27,6 +28,20 @@ function App() {
       setWait(false);
     }, 1);
   });
+
+  useEffect(() => {
+    const fetchDataFromFile = async () => {
+      try {
+        const response = await axios.get('/all_pokemons.json');
+        setAllPokemons(response.data);
+      } catch (error) {
+        console.error("Error fetching the file all_pokemons.json:", error);
+      }
+    };
+    
+    if (wait) return;
+    fetchDataFromFile();
+  }, [wait]);
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -98,7 +113,6 @@ function App() {
 
         setPokemons((prev) => [...prev, ...array_pokemons_scroll]);
         setPokemonsTemp((prev) => [...prev, ...array_pokemons_scroll]);
-
       }, 1000);
 
       return newCount;
@@ -114,6 +128,7 @@ function App() {
         <>
           <ActionComponent
             pokemonsTemp={pokemonsTemp}
+            allPokemons={allPokemons}
             setPokemons={setPokemons}
             setHasMore={setHasMore}
           />

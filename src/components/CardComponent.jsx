@@ -5,7 +5,7 @@ function CardsComponent({ pokemons }) {
   return (
     <div className="poke-container">
       {pokemons.map((pokemon, index) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        <PokemonCard key={index} pokemon={pokemon} />
       ))}
     </div>
   );
@@ -70,7 +70,7 @@ function PokemonCard({ pokemon }) {
         <LazyLoadImage alt={name} effect="opacity-transform" src={image} />
       </div>
       <div className="info">
-        <h3 className="name">{name}</h3>
+        <h3 className="name" onClick={(e) => console.log(e.target.innerHTML)}>{name}</h3>
 
         <div className="extra-info">
           <div>
