@@ -1,6 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-function ActionComponent({ pokemonsTemp, setPokemons, setHasMore }) {
+import axios from "axios";
+
+function ActionComponent({
+  pokemonsTemp,
+  pokemonsName,
+  setPokemons,
+  setHasMore,
+}) {
   const [search, setSearch] = useState("");
   const handleOnChange = (e) => {
     const value = e.target.value;
@@ -10,14 +17,32 @@ function ActionComponent({ pokemonsTemp, setPokemons, setHasMore }) {
 
     if (value === "") {
       setPokemons(pokemonsTemp);
-      setHasMore(true);
+      const last_pokemon_id = pokemonsTemp.slice(-1)[0].id;
+      if (last_pokemon_id !== 1025) {
+        setHasMore(true);
+      }
     }
 
-    setPokemons((prev) =>
-      prev.filter((pokemon) =>
+    setPokemons((prev) => {
+      const newArray = prev.filter((pokemon) =>
         pokemon.name.toLowerCase().startsWith(value.toLowerCase())
-      )
-    );
+      );
+      // pokemonsName.forEach(async (p) => {
+      //   if (p.toLowerCase().startsWith(value.toLowerCase())) {
+      //     try {
+      //       const url = `https://pokeapi.co/api/v2/pokemon/${p}`;
+      //       const result = await axios(url);
+      //       const pokemons = result.data
+      //       console.log(pokemons)
+
+      //     } catch (error) {
+      //       console.error("Error fetching Pokemon:", error);
+      //     }
+      //   }
+      // });
+
+      return newArray;
+    });
   };
 
   return (
