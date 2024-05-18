@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function ActionComponent({
+  search,
   pokemonsTemp,
   allPokemons,
   setPokemons,
   setHasMore,
+  setSearch,
 }) {
-  const [search, setSearch] = useState("");
-  const handleOnChange = (e) => {
+  const handleSearchInput = (e) => {
     const value = e.target.value;
     setSearch(value);
     setHasMore(false);
@@ -33,12 +35,24 @@ function ActionComponent({
     <div className="poke-container action-component">
       <div className="search-container">
         <input
-          onChange={handleOnChange}
+          onChange={handleSearchInput}
           value={search}
           type="text"
           className="search-input"
           placeholder="Search Pokemon.."
         />
+        {search != "" && (
+          <button
+            onClick={() => handleSearchInput({ target: { value: "" } })}
+            className="btn-clear"
+          >
+            <FontAwesomeIcon
+              icon={faTimes}
+              color={"white"}
+              style={{ fontSize: "20px", fontWeight: "bold" }}
+            />
+          </button>
+        )}
       </div>
     </div>
   );

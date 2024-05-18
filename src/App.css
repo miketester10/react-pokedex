@@ -90,7 +90,7 @@ h5 {
 .pokemon-logo {
   width: 15rem;
   margin-top: -1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 h1 {
@@ -329,4 +329,12 @@ footer img {
 
 .search-icon {
   fill: currentColor; /* Inherit color from button */
+}
+
+.btn-clear {
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 4px;
 }
