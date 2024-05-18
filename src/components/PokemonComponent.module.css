@@ -599,7 +599,7 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 }
 
-@media screen and (max-width: 391px) {
+@media screen and (max-width: 394px) {
   .title .name {
     font-size: 1.6em;;
   }

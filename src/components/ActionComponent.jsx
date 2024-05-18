@@ -48,7 +48,7 @@ function ActionComponent({
           >
             <FontAwesomeIcon
               icon={faTimes}
-              color={"white"}
+              color={"#818080ad"}
               style={{ fontSize: "20px", fontWeight: "bold" }}
             />
           </button>
