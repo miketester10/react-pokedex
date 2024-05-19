@@ -1,9 +1,15 @@
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styles from './PokemonComponent.module.css';
 
 
 const PokemonComponent = () => {
+
+  const { name } = useParams();
   useEffect(() => {
+    
+    console.log(name)
+    // Imposta lo scroll in alto
     window.scrollTo(0, 0)
   }, [])
   

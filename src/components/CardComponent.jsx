@@ -34,6 +34,7 @@ function PokemonCard({ pokemon }) {
     ghost: "#7685a7",
     steel: "steelblue",
   };
+  
   const mainTypes = Object.keys(colors);
   const name =
     pokemon.name[0].toUpperCase() + pokemon.name.slice(1) || pokemon.name;

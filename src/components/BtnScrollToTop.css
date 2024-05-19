@@ -26,9 +26,8 @@
   font-weight: 800;
   border-radius: 50%;
   position: relative;
-  animation: down 1.5s infinite;
-  -webkit-animation: up 1.5s infinite;
-  background-color: #ffd93f;
+  animation: up 1.5s infinite;
+  background-color: #ffd52c;
   &::before {
     content: "";
     font-weight: 800;
@@ -40,18 +39,17 @@
     border-left: 4px solid #0f66d1;
     border-bottom: 4px solid #0f66d1;
     transform: rotate(135deg);
-    
   }
 }
 
 @keyframes up {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
