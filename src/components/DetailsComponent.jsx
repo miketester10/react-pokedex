@@ -1,6 +1,12 @@
+import { useEffect } from 'react';
 import styles from './PokemonComponent.module.css';
 
+
 const PokemonComponent = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
   const getLogo = (type) => {
     // Restituisce un URL casuale per il logo
     return 'https://via.placeholder.com/50';

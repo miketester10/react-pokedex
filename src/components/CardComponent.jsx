@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function CardsComponent({ pokemons }) {
@@ -14,8 +14,6 @@ function CardsComponent({ pokemons }) {
 }
 
 function PokemonCard({ pokemon }) {
-  const navigate = useNavigate();
-
   const colors = {
     fire: "orange",
     grass: "lightgreen",
@@ -59,7 +57,10 @@ function PokemonCard({ pokemon }) {
   };
 
   return (
-    <div className="pokemon" style={{ border: `2px solid ${color}` }}>
+    <div
+      className="pokemon"
+      style={{ border: `2px solid ${color}`, cursor: "default" }}
+    >
       <span className="number">#{id}</span>
       <span
         className="type-icon"
@@ -71,12 +72,14 @@ function PokemonCard({ pokemon }) {
       ></span>
 
       <div className="img-container">
-        <LazyLoadImage
-          alt={name}
-          effect="opacity-transform"
-          src={image}
-          onClick={(e) => navigate(`/details/${pokemon.name}`)}
-        />
+        <Link to={`/details/${pokemon.name}`}>
+          <LazyLoadImage
+            alt={name}
+            effect="opacity-transform"
+            src={image}
+            style={{ cursor: "pointer" }}
+          />
+        </Link>
       </div>
       <div className="info">
         <h3 className="name">{name}</h3>

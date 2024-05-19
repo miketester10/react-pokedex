@@ -8,6 +8,7 @@ import {
   LoadingScrollComponent,
 } from "./components/LoadingComponent";
 import HeaderComponent from "./components/HeaderComponent";
+import BtnScrollToTop from "./components/BtnScrollToTop";
 import ActionComponent from "./components/ActionComponent";
 import CardsComponent from "./components/CardComponent";
 import DetailsComponent from "./components/DetailsComponent";
@@ -30,7 +31,7 @@ function App() {
     setTimeout(() => {
       setWait(false);
     }, 1);
-  });
+  }, []);
 
   useEffect(() => {
     const fetchDataFromFile = async () => {
@@ -92,6 +93,10 @@ function App() {
   }, [wait]);
 
   const loadMore = () => {
+    if (pokemons[pokemons.length - 1].id >= max) {
+      setHasMore(false);
+      return;
+    }
     setPokemonCount((prev) => {
       const newCount = prev + 10;
       const increment = newCount - 9;
@@ -103,11 +108,6 @@ function App() {
             const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
             const result = await axios(url);
             const pokemon = result.data;
-            if (pokemon.id === max) {
-              array_pokemons_scroll.push(pokemon);
-              setHasMore(false);
-              break;
-            }
             array_pokemons_scroll.push(pokemon);
           } catch (error) {
             console.error("Error fetching Pokemon:", error);
@@ -124,7 +124,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <HeaderComponent />
+      <HeaderComponent
+        pokemonsTemp={pokemonsTemp}
+        setPokemons={setPokemons}
+        setSearch={setSearch}
+        setHasMore={setHasMore}
+      />
       <Routes>
         <Route
           path="/"
@@ -153,6 +158,7 @@ function App() {
                     </p>
                   }
                 ></InfiniteScroll>
+                <BtnScrollToTop />
               </>
             )
           }

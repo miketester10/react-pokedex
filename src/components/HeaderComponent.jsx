@@ -1,11 +1,24 @@
-function HeaderComponent() {
+/* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
+
+function HeaderComponent({ pokemonsTemp, setPokemons, setSearch, setHasMore }) {
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+    setPokemons(pokemonsTemp);
+    setSearch("");
+    setHasMore(true);
+  };
+
   return (
     <>
-      <img
-        src="https://1000logos.net/wp-content/uploads/2017/05/Pokemon-Logo.png"
-        alt="Pokemon Logo"
-        className="pokemon-logo"
-      />
+      <Link to="/" className="logo" onClick={handleClick}>
+        <img
+          src="https://1000logos.net/wp-content/uploads/2017/05/Pokemon-Logo.png"
+          alt="Pokemon Logo"
+          className="pokemon-logo"
+          style={{ cursor: "pointer" }}
+        />
+      </Link>
 
       <div className="title">
         <img
