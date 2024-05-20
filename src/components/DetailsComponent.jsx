@@ -52,7 +52,7 @@ const DetailsComponent = () => {
       image: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.id
         .toString()
         .padStart(3, "0")}.png`,
-      logo: `/src/assets/icons/${pokemon.types[0].type.name}.svg`,
+      logo: `https://raw.githubusercontent.com/miketester10/react-pokedex/main/src/assets/icons/${pokemon.types[0].type.name}.svg`,
       height: pokemon.height,
       weight: pokemon.weight,
     };
@@ -134,7 +134,7 @@ const DetailsComponent = () => {
           <div className={styles.title}>
             <div className={styles.subgrid}>
               <div className={styles.emoji}>
-                <img src={pokemonDetails.logo} alt="Logo" />
+                <img src={pokemonDetails.logo} alt={pokemonDetails.type} />
               </div>
               <div className={styles.type}>{`${
                 pokemonDetails.types[0].type.name
