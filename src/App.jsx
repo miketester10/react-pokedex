@@ -13,6 +13,7 @@ import ActionComponent from "./components/ActionComponent";
 import CardsComponent from "./components/CardComponent";
 import DetailsComponent from "./components/DetailsComponent";
 import FooterComponent from "./components/FooterComponent";
+import NotFoundPageComponent from "./components/NotFoundPageComponent";
 import axios from "axios";
 
 function App() {
@@ -166,6 +167,10 @@ function App() {
         <Route
           path="/details/:name"
           element={<DetailsComponent setLoading={setLoading} />}
+        />
+        <Route
+          path="*"
+          element={<NotFoundPageComponent/>}
         />
       </Routes>
       <FooterComponent />
