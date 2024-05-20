@@ -114,7 +114,7 @@ function App() {
         }
 
         setPokemons((prev) => [...prev, ...array_pokemons_scroll]);
-      }, 4000);
+      }, 1000);
 
       return newCount;
     });
