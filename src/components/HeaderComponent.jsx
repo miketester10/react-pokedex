@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
-function HeaderComponent({ pokemonsTemp, setPokemons, setSearch, setHasMore }) {
+function HeaderComponent({ setSearch, setHasMore }) {
   const handleClick = () => {
     window.scrollTo(0, 0);
-    setPokemons(pokemonsTemp);
     setSearch("");
     setHasMore(true);
   };

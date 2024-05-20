@@ -3,10 +3,11 @@
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-function CardsComponent({ pokemons }) {
+function CardsComponent({ pokemons, pokemonsFiltered, search }) {
+  const pokemons_array = search ? pokemonsFiltered : pokemons;
   return (
     <div className="poke-container">
-      {pokemons.map((pokemon, index) => (
+      {pokemons_array.map((pokemon, index) => (
         <PokemonCard key={index} pokemon={pokemon} />
       ))}
     </div>

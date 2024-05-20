@@ -18,7 +18,7 @@ import axios from "axios";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
-  const [pokemonsTemp, setPokemonsTemp] = useState([]); // array pokemon temporaneo mi serve per reinizializzare l'array dei pokemon (pokemons) dopo il filtraggio/ricerca
+  const [pokemonsFiltered, setPokemonsFiltered] = useState([]); // array pokemon filtrati con la barra di ricerca
   const [allPokemons, setAllPokemons] = useState([]); // array completo con tutti i pokemon ed i loro dettagli
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -63,7 +63,6 @@ function App() {
       }
       setLoading(false);
       setPokemons(array_pokemons);
-      setPokemonsTemp(array_pokemons);
 
       localStorage.setItem(
         "pokemon",
@@ -85,7 +84,6 @@ function App() {
     const dataLocalStorage = JSON.parse(localStorage.getItem("pokemon"));
     if (dataLocalStorage && dataLocalStorage.length > 0) {
       setPokemons(dataLocalStorage);
-      setPokemonsTemp(dataLocalStorage);
       setLoading(false);
     } else {
       if (wait) return;
@@ -116,8 +114,7 @@ function App() {
         }
 
         setPokemons((prev) => [...prev, ...array_pokemons_scroll]);
-        setPokemonsTemp((prev) => [...prev, ...array_pokemons_scroll]);
-      }, 1000);
+      }, 4000);
 
       return newCount;
     });
@@ -125,12 +122,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <HeaderComponent
-        pokemonsTemp={pokemonsTemp}
-        setPokemons={setPokemons}
-        setSearch={setSearch}
-        setHasMore={setHasMore}
-      />
+      <HeaderComponent setSearch={setSearch} setHasMore={setHasMore} />
       <Routes>
         <Route
           path="/"
@@ -141,13 +133,17 @@ function App() {
               <>
                 <ActionComponent
                   search={search}
-                  pokemonsTemp={pokemonsTemp}
+                  pokemons={pokemons}
                   allPokemons={allPokemons}
+                  setPokemonsFiltered={setPokemonsFiltered}
                   setSearch={setSearch}
-                  setPokemons={setPokemons}
                   setHasMore={setHasMore}
                 />
-                <CardsComponent pokemons={pokemons} />
+                <CardsComponent
+                  pokemons={pokemons}
+                  pokemonsFiltered={pokemonsFiltered}
+                  search={search}
+                />
                 <InfiniteScroll
                   dataLength={pokemons.length}
                   next={loadMore}
@@ -164,14 +160,8 @@ function App() {
             )
           }
         />
-        <Route
-          path="/details/:name"
-          element={<DetailsComponent setLoading={setLoading} />}
-        />
-        <Route
-          path="*"
-          element={<NotFoundPageComponent/>}
-        />
+        <Route path="/details/:name" element={<DetailsComponent />} />
+        <Route path="*" element={<NotFoundPageComponent />} />
       </Routes>
       <FooterComponent />
     </BrowserRouter>

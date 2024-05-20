@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./BtnScrollToTop.css"; // Assicurati di creare questo file
+import "./BtnScrollToTop.css"; 
 
 const BtnScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);

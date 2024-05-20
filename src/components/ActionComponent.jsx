@@ -4,9 +4,9 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function ActionComponent({
   search,
-  pokemonsTemp,
+  pokemons,
   allPokemons,
-  setPokemons,
+  setPokemonsFiltered,
   setHasMore,
   setSearch,
 }) {
@@ -16,15 +16,14 @@ function ActionComponent({
     setHasMore(false);
 
     if (value === "") {
-      setPokemons(pokemonsTemp);
-      const last_pokemon_id = pokemonsTemp.slice(-1)[0].id;
+      const last_pokemon_id = pokemons.slice(-1)[0].id;
       if (last_pokemon_id !== 1025) {
         setHasMore(true);
       }
       return;
     }
 
-    setPokemons(
+    setPokemonsFiltered(
       allPokemons.filter((pokemon) =>
         pokemon.name.toLowerCase().startsWith(value.toLowerCase())
       )
