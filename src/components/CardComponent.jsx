@@ -35,13 +35,12 @@ function PokemonCard({ pokemon }) {
     steel: "steelblue",
   };
   
-  const mainTypes = Object.keys(colors);
   const name =
     pokemon.name[0].toUpperCase() + pokemon.name.slice(1) || pokemon.name;
   const id = pokemon.id.toString().padStart(3, "0") || pokemon.id;
-  const pokeTypes = pokemon.types.map((typeKind) => typeKind.type.name);
+  const pokeTypes = pokemon.types.map((type) => type.type.name);
   const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`;
-  const type = mainTypes.find((type) => pokeTypes.indexOf(type) > -1);
+  const type = pokeTypes[0];
   const color = colors[type];
   const height = pokemon.height / 10;
   const weight = pokemon.weight / 10;
@@ -88,7 +87,7 @@ function PokemonCard({ pokemon }) {
         <div className="extra-info">
           <div>
             <small>Weight</small>
-            <h5 className="weight">{weight} kg</h5>
+            <h5 className="weight">{weight} Kg</h5>
           </div>
           <div>
             <small>Height</small>

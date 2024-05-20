@@ -81,10 +81,10 @@ function App() {
       );
     };
 
-    const dataLocalStorage = localStorage.getItem("pokemon");
-    if (dataLocalStorage && JSON.parse(dataLocalStorage).length > 0) {
-      setPokemons(JSON.parse(dataLocalStorage));
-      setPokemonsTemp(JSON.parse(dataLocalStorage));
+    const dataLocalStorage = JSON.parse(localStorage.getItem("pokemon"));
+    if (dataLocalStorage && dataLocalStorage.length > 0) {
+      setPokemons(dataLocalStorage);
+      setPokemonsTemp(dataLocalStorage);
       setLoading(false);
     } else {
       if (wait) return;
@@ -165,7 +165,7 @@ function App() {
         />
         <Route
           path="/details/:name"
-          element={loading ? <LoadingComponent /> : <DetailsComponent />}
+          element={<DetailsComponent setLoading={setLoading} />}
         />
       </Routes>
       <FooterComponent />

@@ -2,8 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
-
-
 #app {
   position: relative;
   background: linear-gradient(
@@ -15,7 +13,7 @@
   background-blend-mode: soft-light, normal;
   font-family: "Montserrat" !important;
   width: 100%;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
 }
 
 #app.dark {
@@ -180,7 +178,7 @@ input[type="search"]::-webkit-search-cancel-button {
   display: flex;
   color: #ffffff;
   z-index: 3;
-  transition: opacity padding 0.5s ease-in-out;
+  /* transition: opacity padding 0.5s ease-in-out; */
   margin: 0.8rem;
   padding: 1.4rem;
   border-radius: 10px;
@@ -193,11 +191,8 @@ input[type="search"]::-webkit-search-cancel-button {
   padding: 1.4rem;
   color: #f1f1f1;
   position: relative;
-  transition: scale 1s ease-in-out;
+  /* transition: scale 1s ease-in-out; */
 }
-
-
-  
 
 .content > div {
   width: 100%;
@@ -214,7 +209,7 @@ input[type="search"]::-webkit-search-cancel-button {
   grid-template-areas: "... ..." "emoji type" "emoji name" "desc desc" "details details";
   grid-template-rows: 150px min-content min-content min-content;
   grid-template-columns: min-content;
-  transition: opacity padding 0.5s ease-in-out;
+  /* transition: opacity padding 0.5s ease-in-out; */
 }
 .emoji {
   grid-area: emoji;
@@ -228,7 +223,7 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-left: 10px;
   opacity: 0.8;
   font-weight: 500;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
 }
 .subgrid .name {
   grid-area: name;
@@ -239,7 +234,7 @@ input[type="search"]::-webkit-search-cancel-button {
   line-height: 60px;
   color: #ffffff;
   text-transform: capitalize;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
 }
 .desc {
   grid-area: desc;
@@ -361,24 +356,19 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 6px;
 }
 
-/* pokedex */
-.loading {
-  position: absolute;
-  top: 400px;
-  left: 50%;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
+
 .number {
+
   position: absolute;
   font-family: Montserrat;
   font-weight: 900;
-  font-size: 20vmax;
-
+  font-size: 90px;
   color: rgba(255, 255, 255, 0.18);
   user-select: none;
-  right: 0;
-  top: 50px;
+  left: 0;
+  margin-top: 0.6rem;
+  margin-left: 60px;
+  margin-right: 60px;
   z-index: 1;
 }
 .back {
@@ -406,7 +396,7 @@ input[type="search"]::-webkit-search-cancel-button {
   color: #ffffff;
   font-size: 50px;
   opacity: 0.45;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
   cursor: pointer;
 }
 
@@ -430,7 +420,7 @@ input[type="search"]::-webkit-search-cancel-button {
   display: block;
   font-size: 40px;
   opacity: 0.7;
-  transition: opacity 0.5s ease-in-out;
+  /* transition: opacity 0.5s ease-in-out; */
 }
 
 .github,
@@ -461,7 +451,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 /* transitions */
-.content.fade-in {
+/* .content.fade-in {
   opacity: 0;
   padding-top: 30px;
 }
@@ -473,7 +463,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .fade-in .subgrid {
   opacity: 0;
   margin-left: -60px;
-}
+} */
 /* query */
 @media screen and (max-width: 1010px) {
   .title {
@@ -540,12 +530,17 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 
   .number {
-    font-size: 30vmax;
-
+    position: absolute;
+    display: grid;
+    font-family: Montserrat;
+    font-weight: 900;
+    font-size: 30px;
     color: rgba(255, 255, 255, 0.18);
     user-select: none;
-    right: 0;
-    top: 100px;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 0px;
+    top: 15px;
     z-index: 1;
   }
 
@@ -597,11 +592,25 @@ input[type="search"]::-webkit-search-cancel-button {
   .content {
     width: 24em;
   }
+  .number {
+    position: absolute;
+    display: grid;
+    font-family: Montserrat;
+    font-weight: 900;
+    font-size: 1.8em;
+    color: rgba(255, 255, 255, 0.18);
+    user-select: none;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 0px;
+    top: 15px;
+    z-index: 1;
+  }
 }
 
 @media screen and (max-width: 394px) {
   .title .name {
-    font-size: 1.6em;;
+    font-size: 1.6em;
   }
 
   .filter {
@@ -630,11 +639,26 @@ input[type="search"]::-webkit-search-cancel-button {
   .content {
     width: 22em;
   }
+  .number {
+    position: absolute;
+    display: grid;
+    font-family: Montserrat;
+    font-weight: 900;
+    font-size: 1.6em;
+    color: rgba(255, 255, 255, 0.18);
+    user-select: none;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 0px;
+    top: 15px;
+    z-index: 1;
+  }
+
 }
 
 @media screen and (max-width: 376px) {
   .title .name {
-    font-size: 1.4em;;
+    font-size: 1.4em;
   }
 
   .filter {
@@ -663,4 +687,19 @@ input[type="search"]::-webkit-search-cancel-button {
   .content {
     width: 20em;
   }
+  .number {
+    position: absolute;
+    display: grid;
+    font-family: Montserrat;
+    font-weight: 900;
+    font-size: 1.4em;
+    color: rgba(255, 255, 255, 0.18);
+    user-select: none;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 0px;
+    top: 15px;
+    z-index: 1;
+  }
+
 }
