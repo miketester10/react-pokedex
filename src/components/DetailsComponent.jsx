@@ -58,9 +58,7 @@ const DetailsComponent = () => {
       abilities: pokemon.abilities[0].ability.name,
       types: pokemon.types,
       type: pokemon.types[0].type.name,
-      image: `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.id
-        .toString()
-        .padStart(3, "0")}.png`,
+      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`,
       logo: `https://raw.githubusercontent.com/miketester10/react-pokedex/main/src/assets/icons/${pokemon.types[0].type.name}.svg`,
       height: pokemon.height,
       weight: pokemon.weight,

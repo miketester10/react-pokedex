@@ -19,7 +19,7 @@ const PokemonCard = ({ pokemon }) => {
   const id = pokemon.id.toString().padStart(3, "0") || pokemon.id;
   const types = pokemon.types;
   const type = pokemon.types[0].type.name;
-  const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`;
+  const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`;
   const height = pokemon.height / 10;
   const weight = pokemon.weight / 10;
 

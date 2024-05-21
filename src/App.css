@@ -149,9 +149,9 @@ h1 {
 } */
 
 .pokemon .img-container img {
-  margin-top: 1rem;
-  width: 84%;
-  height: 84%;
+  margin-top: 0.7rem;
+  width: 90%;
+  height: 90%;
   animation: updown 1s ease infinite;
   /* filter: saturate(130%) brightness(110%); */
 }
