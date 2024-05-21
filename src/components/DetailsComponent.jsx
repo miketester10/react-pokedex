@@ -5,11 +5,14 @@ import { useSpring, animated } from "react-spring"; // per animazioni
 import { useParams } from "react-router-dom";
 import styles from "./DetailsComponent.module.css";
 import { LoadingComponent } from "./LoadingComponent";
+import NotFoundPageComponent from "./NotFoundPageComponent";
 import axios from "axios";
+import { getColor, getNameString, getPokemonType } from "../functions/utility";
 
 const DetailsComponent = () => {
   const [loading, setLoading] = useState(true);
   const [pokemonDetails, setPokemonDetails] = useState({});
+  const [error404, setError404] = useState(false);
 
   const slideAnimation = useSpring({
     from: { opacity: 0, transform: "translateY(100%)" },
@@ -27,6 +30,11 @@ const DetailsComponent = () => {
         setLoading(false);
         loadPokemonDetails(pokemon);
       } catch (error) {
+        if (error.response.status === 404) {
+          setLoading(false);
+          setError404(true);
+          return;
+        }
         console.error("Error fetching Pokemon:", error);
       }
     };
@@ -62,47 +70,8 @@ const DetailsComponent = () => {
     localStorage.setItem("pokemonDetails", JSON.stringify(obj));
   };
 
-  const getColor = (type) => {
-    const colors = {
-      fire: "orange",
-      grass: "lightgreen",
-      electric: "yellow",
-      water: "#70ffea",
-      ground: "darkgrey",
-      rock: "grey",
-      fairy: "pink",
-      poison: "greenyellow",
-      bug: "#94ecbe",
-      dragon: "orange",
-      psychic: "#7c7db6",
-      flying: "#fcca46",
-      fighting: "darkgrey",
-      normal: "lightgrey",
-      ice: "#00f2f2",
-      dark: "#4f7ecf",
-      ghost: "#7685a7",
-      steel: "steelblue",
-    };
-
-    return colors[type];
-  };
-
   const height = pokemonDetails.height / 10;
   const weight = pokemonDetails.weight / 10;
-
-  const getTypesString = (types) => {
-    return `${types[0].type.name} ${
-      types[1] ? ` / ${types[1].type.name}` : ""
-    }`;
-  };
-
-  const getNameString = (name) => {
-    if (name.includes("-")) {
-      const nameSplitted = name.split("-");
-      return nameSplitted.join(" ");
-    }
-    return name;
-  };
 
   const getAbilitiesString = (abilities) => {
     if (abilities.includes("-")) {
@@ -121,12 +90,14 @@ const DetailsComponent = () => {
   };
 
   const getStatWidth = (base_stat) => {
-    let total = 250;
+    const total = 255;
     return `${(base_stat / total) * 100}%`;
   };
 
   return loading ? (
     <LoadingComponent />
+  ) : error404 ? (
+    <NotFoundPageComponent />
   ) : (
     <animated.div className="content" style={slideAnimation}>
       <div
@@ -143,7 +114,7 @@ const DetailsComponent = () => {
                 <img src={pokemonDetails.logo} alt={pokemonDetails.type} />
               </div>
               <div className={styles.type}>
-                {getTypesString(pokemonDetails.types)}
+                {getPokemonType(pokemonDetails.types)}
               </div>
               <div
                 className={styles.name}

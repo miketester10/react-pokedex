@@ -1,4 +1,4 @@
-function FooterComponent() {
+const FooterComponent = () => {
   return (
     <footer>
       Source :
@@ -10,6 +10,6 @@ function FooterComponent() {
       </a>
     </footer>
   );
-}
+};
 
 export default FooterComponent;

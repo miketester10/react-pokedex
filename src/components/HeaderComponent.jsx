@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
-function HeaderComponent({ setSearch, setHasMore }) {
+const HeaderComponent = ({ setSearch, setHasMore }) => {
   const handleClick = () => {
     window.scrollTo(0, 0);
     setSearch("");
@@ -29,6 +29,6 @@ function HeaderComponent({ setSearch, setHasMore }) {
       </div>
     </>
   );
-}
+};
 
 export default HeaderComponent;

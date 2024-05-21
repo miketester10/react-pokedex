@@ -2,8 +2,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { getColor, getNameString, getPokemonType } from "../functions/utility";
 
-function CardsComponent({ pokemons, pokemonsFiltered, search }) {
+const CardsComponent = ({ pokemons, pokemonsFiltered, search }) => {
   const pokemons_array = search ? pokemonsFiltered : pokemons;
   return (
     <div className="poke-container">
@@ -12,76 +13,35 @@ function CardsComponent({ pokemons, pokemonsFiltered, search }) {
       ))}
     </div>
   );
-}
+};
 
-function PokemonCard({ pokemon }) {
-  const colors = {
-    fire: "orange",
-    grass: "lightgreen",
-    electric: "yellow",
-    water: "#70ffea",
-    ground: "darkgrey",
-    rock: "grey",
-    fairy: "pink",
-    poison: "greenyellow",
-    bug: "#94ecbe",
-    dragon: "orange",
-    psychic: "#7c7db6",
-    flying: "#fcca46",
-    fighting: "darkgrey",
-    normal: "lightgrey",
-    ice: "#00f2f2",
-    dark: "#4f7ecf",
-    ghost: "#7685a7",
-    steel: "steelblue",
-  };
-
-  const getNameString = (name) => {
-    if (name.includes("-")) {
-      const nameSplitted = name.split("-");
-      return nameSplitted.join(" ");
-    }
-    return name;
-  };
-
+const PokemonCard = ({ pokemon }) => {
   const id = pokemon.id.toString().padStart(3, "0") || pokemon.id;
-  const pokeTypes = pokemon.types.map((type) => type.type.name);
+  const types = pokemon.types;
+  const type = pokemon.types[0].type.name;
   const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`;
-  const type = pokeTypes[0];
-  const color = colors[type];
   const height = pokemon.height / 10;
   const weight = pokemon.weight / 10;
-
-  const getPokemonType = (pokeTypes) => {
-    if (pokeTypes.length == 1) {
-      const pokeType = pokeTypes[0][0].toUpperCase() + pokeTypes[0].slice(1);
-      return pokeType;
-    } else {
-      const pokeType1 = pokeTypes[0][0].toUpperCase() + pokeTypes[0].slice(1);
-      const pokeType2 = pokeTypes[1][0].toUpperCase() + pokeTypes[1].slice(1);
-      return `${pokeType1} / ${pokeType2}`;
-    }
-  };
 
   return (
     <div
       className="pokemon"
-      style={{ border: `2px solid ${color}`, cursor: "default" }}
+      style={{ border: `2px solid ${getColor(type)}`, cursor: "default" }}
     >
       <span className="number">#{id}</span>
       <span
         className="type-icon"
         title={type}
         style={{
-          backgroundColor: color,
-          boxShadow: `0 0 6px ${color}`,
+          backgroundColor: getColor(type),
+          boxShadow: `0 0 6px ${getColor(type)}`,
         }}
       ></span>
 
       <div className="img-container">
         <Link to={`/details/${pokemon.name}`}>
           <LazyLoadImage
-            alt={name}
+            alt={pokemon.name}
             effect="opacity-transform"
             src={image}
             style={{ cursor: "pointer" }}
@@ -104,11 +64,11 @@ function PokemonCard({ pokemon }) {
 
         <div className="type-data">
           <small>Type:</small>
-          <h5 className="type"> {getPokemonType(pokeTypes)}</h5>
+          <h5 className="type"> {getPokemonType(types)}</h5>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default CardsComponent;

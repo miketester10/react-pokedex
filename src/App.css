@@ -195,6 +195,10 @@ h1 {
   cursor: help;
 }
 
+.type {
+  text-transform: capitalize;
+}
+
 .name {
   margin: 1rem 0 0.3rem;
   text-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.9);

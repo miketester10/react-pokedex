@@ -2,14 +2,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-function ActionComponent({
+const ActionComponent = ({
   search,
   pokemons,
   allPokemons,
   setPokemonsFiltered,
   setHasMore,
   setSearch,
-}) {
+}) => {
   const handleSearchInput = (e) => {
     const value = e.target.value;
     setSearch(value);
@@ -55,6 +55,6 @@ function ActionComponent({
       </div>
     </div>
   );
-}
+};
 
 export default ActionComponent;

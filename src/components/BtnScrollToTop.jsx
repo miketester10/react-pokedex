@@ -9,7 +9,7 @@ const BtnScrollToTop = () => {
     const windowHeight =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight;
-    if (scrollTop / windowHeight > 0.008) {
+    if (scrollTop / windowHeight > 0.1) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
