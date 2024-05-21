@@ -62,35 +62,38 @@ const DetailsComponent = () => {
     localStorage.setItem("pokemonDetails", JSON.stringify(obj));
   };
 
-  const colors = {
-    fire: "orange",
-    grass: "lightgreen",
-    electric: "yellow",
-    water: "#70ffea",
-    ground: "darkgrey",
-    rock: "grey",
-    fairy: "pink",
-    poison: "greenyellow",
-    bug: "#94ecbe",
-    dragon: "orange",
-    psychic: "#7c7db6",
-    flying: "#fcca46",
-    fighting: "darkgrey",
-    normal: "lightgrey",
-    ice: "#00f2f2",
-    dark: "#4f7ecf",
-    ghost: "#7685a7",
-    steel: "steelblue",
-  };
-
   const getColor = (type) => {
+    const colors = {
+      fire: "orange",
+      grass: "lightgreen",
+      electric: "yellow",
+      water: "#70ffea",
+      ground: "darkgrey",
+      rock: "grey",
+      fairy: "pink",
+      poison: "greenyellow",
+      bug: "#94ecbe",
+      dragon: "orange",
+      psychic: "#7c7db6",
+      flying: "#fcca46",
+      fighting: "darkgrey",
+      normal: "lightgrey",
+      ice: "#00f2f2",
+      dark: "#4f7ecf",
+      ghost: "#7685a7",
+      steel: "steelblue",
+    };
+
     return colors[type];
   };
+
   const height = pokemonDetails.height / 10;
   const weight = pokemonDetails.weight / 10;
 
   const getTypesString = (types) => {
-    return `${types[0].type.name} ${types[1] ? ` / ${types[1].type.name}` : ""}`;
+    return `${types[0].type.name} ${
+      types[1] ? ` / ${types[1].type.name}` : ""
+    }`;
   };
 
   const getNameString = (name) => {
@@ -117,10 +120,9 @@ const DetailsComponent = () => {
     return statName;
   };
 
-  const getStatWidth = (index) => {
-    // Restituisce una larghezza casuale per la barra della statistica
-    const widths = ["45%", "49%", "49%", "65%", "65%", "45%"];
-    return widths[index];
+  const getStatWidth = (base_stat) => {
+    let total = 250;
+    return `${(base_stat / total) * 100}%`;
   };
 
   return loading ? (
@@ -182,7 +184,7 @@ const DetailsComponent = () => {
                     <div
                       className={styles.inside}
                       style={{
-                        width: `${elemento.base_stat}%`,
+                        width: getStatWidth(elemento.base_stat),
                         backgroundColor: getColor(pokemonDetails.type),
                       }}
                     ></div>
