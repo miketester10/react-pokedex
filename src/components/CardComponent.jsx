@@ -35,9 +35,15 @@ function PokemonCard({ pokemon }) {
     ghost: "#7685a7",
     steel: "steelblue",
   };
-  
-  const name =
-    pokemon.name[0].toUpperCase() + pokemon.name.slice(1) || pokemon.name;
+
+  const getNameString = (name) => {
+    if (name.includes("-")) {
+      const nameSplitted = name.split("-");
+      return nameSplitted.join(" ");
+    }
+    return name;
+  };
+
   const id = pokemon.id.toString().padStart(3, "0") || pokemon.id;
   const pokeTypes = pokemon.types.map((type) => type.type.name);
   const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`;
@@ -83,7 +89,7 @@ function PokemonCard({ pokemon }) {
         </Link>
       </div>
       <div className="info">
-        <h3 className="name">{name}</h3>
+        <h3 className="name">{getNameString(pokemon.name)}</h3>
 
         <div className="extra-info">
           <div>
