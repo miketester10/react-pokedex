@@ -20,7 +20,7 @@ const NotFoundPageComponent = () => {
   return (
     <div className={style.container}>
       <animated.div style={numberSpringProps}>
-        <img className={style.img404} src="/src/assets/img/pikachu404.png" alt="pikachu" />
+        <img className={style.img404} src="https://raw.githubusercontent.com/miketester10/react-pokedex/397994d04ee3f97a75a65b311e404aa5aa71bb33/src/assets/img/pikachu404.png" alt="pikachu" />
       </animated.div>
       <animated.div className={style.text} style={textSpringProps}>
         <p>Oops! 404 Page not found</p>
