@@ -22,18 +22,10 @@ function App() {
   const [allPokemons, setAllPokemons] = useState([]); // array completo con tutti i pokemon ed i loro dettagli
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(true);
-  // const [wait, setWait] = useState(true);
   const [pokemonCount, setPokemonCount] = useState(45); // all'avvio del sito voglio caricare solo 45 pokemon, poi ad ogni scroll ne carico 10 alla volta
   const [search, setSearch] = useState("");
 
   const max = 1025;
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setWait(false);
-  //   }, 1);
-  //   window.scrollTo(0, 0);
-  // }, []);
 
   useEffect(() => {
     const fetchDataFromFile = async () => {
@@ -45,9 +37,8 @@ function App() {
       }
     };
 
-    // if (wait) return;
     fetchDataFromFile();
-  }, []); //wait
+  }, []);
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -86,11 +77,10 @@ function App() {
     if (dataLocalStorage && dataLocalStorage.length > 0) {
       setPokemons(dataLocalStorage);
       setLoading(false);
-    } else {
-      // if (wait) return;
-      fetchPokemons();
+      return;
     }
-  }, []); // wait
+    fetchPokemons();
+  }, []);
 
   const loadMore = () => {
     if (pokemons[pokemons.length - 1].id >= max) {
