@@ -42,7 +42,7 @@ const PokemonCard = ({ pokemon }) => {
         <Link to={`/details/${pokemon.name}`}>
           <LazyLoadImage
             alt={pokemon.name}
-            effect="opacity-transform"
+            effect="blur"
             src={image}
             style={{ cursor: "pointer" }}
           />

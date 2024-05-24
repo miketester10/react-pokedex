@@ -3,13 +3,11 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {
-  LoadingComponent,
-  LoadingScrollComponent,
-} from "./components/LoadingComponent";
+import { LoadingScrollComponent } from "./components/LoadingComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import BtnScrollToTop from "./components/BtnScrollToTop";
 import ActionComponent from "./components/ActionComponent";
+import LoadingCardsComponent from "./components/LoadingCardsComponent";
 import CardsComponent from "./components/CardComponent";
 import DetailsComponent from "./components/DetailsComponent";
 import FooterComponent from "./components/FooterComponent";
@@ -22,7 +20,7 @@ function App() {
   const [allPokemons, setAllPokemons] = useState([]); // array completo con tutti i pokemon ed i loro dettagli
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [pokemonCount, setPokemonCount] = useState(45); // all'avvio del sito voglio caricare solo 45 pokemon, poi ad ogni scroll ne carico 10 alla volta
+  const [pokemonCount, setPokemonCount] = useState(50); // all'avvio del sito voglio caricare solo 100 pokemon, poi ad ogni scroll ne carico 10 alla volta
   const [search, setSearch] = useState("");
 
   const max = 1025;
@@ -118,37 +116,39 @@ function App() {
         <Route
           path="/"
           element={
-            loading ? (
-              <LoadingComponent />
-            ) : (
-              <>
-                <ActionComponent
-                  search={search}
-                  pokemons={pokemons}
-                  allPokemons={allPokemons}
-                  setPokemonsFiltered={setPokemonsFiltered}
-                  setSearch={setSearch}
-                  setHasMore={setHasMore}
-                />
-                <CardsComponent
-                  pokemons={pokemons}
-                  pokemonsFiltered={pokemonsFiltered}
-                  search={search}
-                />
-                <InfiniteScroll
-                  dataLength={pokemons.length}
-                  next={loadMore}
-                  hasMore={hasMore}
-                  loader={<LoadingScrollComponent />}
-                  endMessage={
-                    <p style={{ textAlign: "center", color: "white" }}>
-                      <b>Yay! You have seen it all</b>
-                    </p>
-                  }
-                ></InfiniteScroll>
-                <BtnScrollToTop />
-              </>
-            )
+            <>
+              <ActionComponent
+                search={search}
+                pokemons={pokemons}
+                allPokemons={allPokemons}
+                setPokemonsFiltered={setPokemonsFiltered}
+                setSearch={setSearch}
+                setHasMore={setHasMore}
+              />
+              {loading ? (
+                <LoadingCardsComponent qty={pokemonCount} />
+              ) : (
+                <>
+                  <CardsComponent
+                    pokemons={pokemons}
+                    pokemonsFiltered={pokemonsFiltered}
+                    search={search}
+                  />
+                  <InfiniteScroll
+                    dataLength={pokemons.length}
+                    next={loadMore}
+                    hasMore={hasMore}
+                    loader={<LoadingScrollComponent />}
+                    endMessage={
+                      <p style={{ textAlign: "center", color: "white" }}>
+                        <b>Yay! You have seen it all</b>
+                      </p>
+                    }
+                  ></InfiniteScroll>
+                  <BtnScrollToTop />
+                </>
+              )}
+            </>
           }
         />
         <Route path="/details/:name" element={<DetailsComponent />} />
