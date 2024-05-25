@@ -1,17 +1,18 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { RotatingLines, Blocks } from "react-loader-spinner";
 
-export const LoadingComponent = () => {
-  return (
-    <RotatingLines
-      strokeColor="grey"
-      strokeWidth="5"
-      animationDuration="0.75"
-      width={96}
-      visible={true}
-    />
-  );
-};
+// export const LoadingComponent = () => {
+//   return (
+//     <RotatingLines
+//       strokeColor="grey"
+//       strokeWidth="5"
+//       animationDuration="0.75"
+//       width={96}
+//       visible={true}
+//     />
+//   );
+// };
 
 export const LoadingScrollComponent = () => {
   return (

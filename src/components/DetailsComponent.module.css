@@ -216,6 +216,15 @@ input[type="search"]::-webkit-search-cancel-button {
   padding-right: 10px;
   margin: auto 0;
 }
+.skeleton_emoji {
+  width: 90px;
+  height: 90px;
+}
+.skeleton_name {
+  width: 350px;
+  height: 50px;
+}
+
 .type {
   margin-top: auto;
   grid-area: type;
@@ -288,7 +297,10 @@ input[type="search"]::-webkit-search-cancel-button {
   height: 300px;
   width: 300px;
 }
-
+.skeleton_picture {
+  width: 300px;
+  height: 300px;
+}
 .picture::before {
   content: "";
   display: block;
@@ -355,10 +367,12 @@ input[type="search"]::-webkit-search-cancel-button {
   height: 100%;
   border-radius: 6px;
 }
-
+.skeleton_bar {
+  width: 425px;
+  height: 25px;
+}
 
 .number {
-
   position: absolute;
   font-family: Montserrat;
   font-weight: 900;
@@ -370,6 +384,11 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-left: 60px;
   margin-right: 60px;
   z-index: 1;
+}
+
+.skeleton_number {
+  width: 260px;
+  height: 90px;
 }
 .back {
   position: fixed;
@@ -474,6 +493,10 @@ input[type="search"]::-webkit-search-cancel-button {
     grid-template-areas: "emoji type" "emoji name" "desc desc" "details details";
     grid-template-rows: min-content min-content min-content;
   }
+  .skeleton_emoji {
+    width: 85px;
+    height: 85px;
+  }
   .title > .picture {
     display: flex;
     justify-content: center;
@@ -498,6 +521,10 @@ input[type="search"]::-webkit-search-cancel-button {
     word-break: break-all;
   }
   .picture {
+    width: 200px;
+    height: 200px;
+  }
+  .skeleton_picture {
     width: 200px;
     height: 200px;
   }
@@ -542,6 +569,11 @@ input[type="search"]::-webkit-search-cancel-button {
     margin-right: 0px;
     top: 15px;
     z-index: 1;
+  }
+
+  .skeleton_number {
+    width: 80px;
+    height: 37px;
   }
 
   .back,
@@ -608,9 +640,43 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 }
 
+@media (max-width: 450px) {
+  .skeleton_emoji {
+    width: 85px;
+    height: 85px;
+  }
+  .skeleton_number {
+    width: 70px;
+    height: 30px;
+  }
+
+  .skeleton_name {
+    width: 100px;
+    height: 30px;
+  }
+  .skeleton_picture {
+    width: 180px;
+    height: 180px;
+  }
+}
+
 @media screen and (max-width: 394px) {
   .title .name {
     font-size: 1.6em;
+  }
+
+  .skeleton_name {
+    width: 100px;
+    height: 30px;
+  }
+
+  .skeleton_picture {
+    width: 180px;
+    height: 180px;
+  }
+  .skeleton_number {
+    width: 60px;
+    height: 25px;
   }
 
   .filter {
@@ -653,7 +719,6 @@ input[type="search"]::-webkit-search-cancel-button {
     top: 15px;
     z-index: 1;
   }
-
 }
 
 @media screen and (max-width: 376px) {
@@ -702,4 +767,17 @@ input[type="search"]::-webkit-search-cancel-button {
     z-index: 1;
   }
 
+  .skeleton_name {
+    width: 80px;
+    height: 20px;
+  }
+
+  .skeleton_picture {
+    width: 168px;
+    height: 168px;
+  }
+  .skeleton_number {
+    width: 60px;
+    height: 25px;
+  }
 }

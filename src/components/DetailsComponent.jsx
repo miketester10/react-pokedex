@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring"; // per animazioni
 import { useParams } from "react-router-dom";
 import styles from "./DetailsComponent.module.css";
-import { LoadingComponent } from "./LoadingComponent";
+// import { LoadingComponent } from "./LoadingComponent";
+import LoadingDetailsComponent from "./LoadingDetailsComponent";
 import NotFoundPageComponent from "./NotFoundPageComponent";
 import axios from "axios";
 import { getColor, getNameString, getPokemonType } from "../functions/utility";
@@ -93,7 +94,7 @@ const DetailsComponent = () => {
   };
 
   return loading ? (
-    <LoadingComponent />
+    <LoadingDetailsComponent />
   ) : error404 ? (
     <NotFoundPageComponent />
   ) : (
