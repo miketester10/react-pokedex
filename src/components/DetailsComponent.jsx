@@ -136,9 +136,10 @@ const DetailsComponent = () => {
                 </div>
               </div>
             </div>
-
-            <div className={styles.picture}>
-              <img src={pokemonDetails.image} alt="Pokemon" />
+            <div className={styles.picture_container}>
+              <div className={styles.picture}>
+                <img src={pokemonDetails.image} alt="Pokemon" />
+              </div>
             </div>
           </div>
 

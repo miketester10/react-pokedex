@@ -47,17 +47,7 @@ const LoadingDetailsComponent = () => {
                   </div>
                 </div>
               </div>
-
-              <div
-                className={styles.picture}
-                style={{
-                  animation: "none",
-                  marginRight: "1rem",
-                  paddingLeft: "1rem",
-                }}
-              >
-                <Skeleton className={styles.skeleton_picture} circle={true} />
-              </div>
+              <Skeleton className={styles.skeleton_picture} circle={true} />
             </div>
 
             <div className={styles.stats}>
