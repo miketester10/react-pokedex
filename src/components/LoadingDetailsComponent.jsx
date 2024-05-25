@@ -56,7 +56,7 @@ const LoadingDetailsComponent = () => {
                   paddingLeft: "1rem",
                 }}
               >
-                <Skeleton className={styles.skeleton_picture} />
+                <Skeleton className={styles.skeleton_picture} circle={true} />
               </div>
             </div>
 
@@ -74,7 +74,7 @@ const LoadingDetailsComponent = () => {
                       className={styles.bar}
                       style={{ backgroundColor: "transparent" }}
                     >
-                      <Skeleton classNamewidth={425} height={20} />
+                      <Skeleton height={20} />
                     </div>
                     <div className={styles.base}>
                       <Skeleton width={30} height={20} />

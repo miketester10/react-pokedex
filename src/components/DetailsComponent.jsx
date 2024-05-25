@@ -28,7 +28,7 @@ const DetailsComponent = () => {
         const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
         const result = await axios(url);
         const pokemon = result.data;
-        setLoading(false);
+        setTimeout(() => setLoading(false), 1000); // setLoading(false);
         loadPokemonDetails(pokemon);
       } catch (error) {
         if (error.response.status === 404) {
