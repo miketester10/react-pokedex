@@ -5,7 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 const LoadingCardsComponent = ({ qty }) => {
   return (
     <div className="poke-container">
-      {Array.from({ length: qty }).map((_, index) => (
+      {Array.from({ length: qty }).map((_, index) => ( // creo un array lungo qty e genero le skeleton card
         <LoadingCard key={index} />
       ))}
     </div>
@@ -49,13 +49,13 @@ const LoadingCard = () => {
           <div className="extra-info">
             <div>
               <Skeleton width={44} height={15} />
-              <h5 className="weight">
+              <h5 className="weight" style={{ backgroundColor: "transparent" }}>
                 <Skeleton width={44} height={15} />
               </h5>
             </div>
             <div>
               <Skeleton width={44} height={15} />
-              <h5 className="height">
+              <h5 className="height" style={{ backgroundColor: "transparent" }}>
                 <Skeleton width={44} height={15} />
               </h5>
             </div>
