@@ -361,9 +361,12 @@ input[type="search"]::-webkit-search-cancel-button {
   height: 30px;
   padding: 6px 0;
 }
-.row .name {
+.row .name_stats {
   width: 150px;
   text-transform: capitalize;
+}
+.name {
+  min-width: 350px;
 }
 
 .stats .bar {
@@ -615,21 +618,27 @@ input[type="search"]::-webkit-search-cancel-button {
   .skeleton_picture {
     width: 250px;
     height: 250px;
+    margin-bottom: 20px;
     justify-content: center;
     align-items: center;
   }
   .picture_container {
     width: 250px;
     height: 250px;
+    margin-bottom: 20px;
     margin-left: 0px;
     justify-content: center;
     align-items: center;
+    
   }
 }
 
 @media screen and (max-width: 450px) {
   .title .name {
     font-size: 1.8em;
+  }
+  .name {
+    min-width: 0px;
   }
 
   .filter {

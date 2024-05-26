@@ -48,7 +48,7 @@ const DetailsComponent = ({ setAnimationCompleted }) => {
     } else {
       fetchPokemon(name);
     }
-    
+
     window.scrollTo(0, 0); // Imposta lo scroll in alto
     setAnimationCompleted(false);
   }, []);
@@ -102,7 +102,7 @@ const DetailsComponent = ({ setAnimationCompleted }) => {
     <animated.div style={slideAnimation}>
       <div
         className={styles.content}
-        style={{ border: `2px solid ${getColor(pokemonDetails.type)}`, minWidth: "808px" }}
+        style={{ border: `2px solid ${getColor(pokemonDetails.type)}` }}
       >
         <div className={styles.number}>{`#${pokemonDetails.id
           .toString()
@@ -118,7 +118,9 @@ const DetailsComponent = ({ setAnimationCompleted }) => {
               </div>
               <div
                 className={styles.name}
-                style={{ color: getColor(pokemonDetails.type), minWidth: "360px" }}
+                style={{
+                  color: getColor(pokemonDetails.type),
+                }}
               >
                 {getNameString(pokemonDetails.name)}
               </div>
@@ -149,7 +151,7 @@ const DetailsComponent = ({ setAnimationCompleted }) => {
             <div className={styles.graphics}>
               {pokemonDetails.stats.map((elemento, index) => (
                 <div className={styles.row} key={index}>
-                  <div className={styles.name}>
+                  <div className={styles.name_stats}>
                     {getStatNameString(elemento.stat.name)}
                   </div>
                   <div className={styles.bar}>

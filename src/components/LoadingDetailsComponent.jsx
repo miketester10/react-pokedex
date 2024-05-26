@@ -57,7 +57,7 @@ const LoadingDetailsComponent = () => {
               <div className={styles.graphics}>
                 {Array.from({ length: 6 }).map((_, index) => (
                   <div className={styles.row} key={index}>
-                    <div className={styles.name}>
+                    <div className={styles.name_stats}>
                       <Skeleton width={120} height={20} />
                     </div>
                     <div
