@@ -70,3 +70,24 @@ export const getNameString = (name) => {
 export const getPokemonType = (types) => {
   return `${types[0].type.name} ${types[1] ? ` / ${types[1].type.name}` : ""}`;
 };
+
+export const getAbilitiesString = (abilities) => {
+  if (abilities.includes("-")) {
+    const abilitiesSplitted = abilities.split("-");
+    return abilitiesSplitted.join(" ");
+  }
+  return abilities;
+};
+
+export const getStatNameString = (statName) => {
+  if (statName.includes("-")) {
+    const name = statName.split("-").join(" ");
+    return name;
+  }
+  return statName;
+};
+
+export const getStatWidth = (base_stat) => {
+  const total = 255;
+  return `${(base_stat / total) * 100}%`;
+};

@@ -4,11 +4,17 @@ import { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring"; // per animazioni
 import { useParams } from "react-router-dom";
 import styles from "./DetailsComponent.module.css";
-// import { LoadingComponent } from "./LoadingComponent";
 import LoadingDetailsComponent from "./LoadingDetailsComponent";
 import NotFoundPageComponent from "./NotFoundPageComponent";
 import axios from "axios";
-import { getColor, getNameString, getPokemonType } from "../functions/utility";
+import {
+  getColor,
+  getNameString,
+  getPokemonType,
+  getAbilitiesString,
+  getStatNameString,
+  getStatWidth,
+} from "../functions/utility";
 
 const DetailsComponent = ({ setAnimationCompleted }) => {
   const [loading, setLoading] = useState(true);
@@ -72,27 +78,6 @@ const DetailsComponent = ({ setAnimationCompleted }) => {
 
   const height = pokemonDetails.height / 10;
   const weight = pokemonDetails.weight / 10;
-
-  const getAbilitiesString = (abilities) => {
-    if (abilities.includes("-")) {
-      const abilitiesSplitted = abilities.split("-");
-      return abilitiesSplitted.join(" ");
-    }
-    return abilities;
-  };
-
-  const getStatNameString = (statName) => {
-    if (statName.includes("-")) {
-      const name = statName.split("-").join(" ");
-      return name;
-    }
-    return statName;
-  };
-
-  const getStatWidth = (base_stat) => {
-    const total = 255;
-    return `${(base_stat / total) * 100}%`;
-  };
 
   return loading ? (
     <LoadingDetailsComponent />
