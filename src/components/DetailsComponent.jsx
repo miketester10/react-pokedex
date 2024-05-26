@@ -24,13 +24,16 @@ const DetailsComponent = ({ setAnimationCompleted }) => {
 
   const { name } = useParams();
   useEffect(() => {
+    window.scrollTo(0, 0); // Imposta lo scroll in alto
+    setAnimationCompleted(false);
+
     const fetchPokemon = async (name) => {
       try {
         const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
         const result = await axios(url);
         const pokemon = result.data;
-        setTimeout(() => setLoading(false), 1000); // setLoading(false);
         loadPokemonDetails(pokemon);
+        setTimeout(() => setLoading(false), 1000);
       } catch (error) {
         if (error.response.status === 404) {
           setLoading(false);
@@ -45,12 +48,9 @@ const DetailsComponent = ({ setAnimationCompleted }) => {
     if (dataLocalStorage && dataLocalStorage.name === name) {
       setLoading(false);
       setPokemonDetails(dataLocalStorage);
-    } else {
-      fetchPokemon(name);
+      return;
     }
-
-    window.scrollTo(0, 0); // Imposta lo scroll in alto
-    setAnimationCompleted(false);
+    fetchPokemon(name);
   }, []);
 
   const loadPokemonDetails = (pokemon) => {
