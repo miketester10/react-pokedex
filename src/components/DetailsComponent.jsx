@@ -10,7 +10,7 @@ import NotFoundPageComponent from "./NotFoundPageComponent";
 import axios from "axios";
 import { getColor, getNameString, getPokemonType } from "../functions/utility";
 
-const DetailsComponent = () => {
+const DetailsComponent = ({ setAnimationCompleted }) => {
   const [loading, setLoading] = useState(true);
   const [pokemonDetails, setPokemonDetails] = useState({});
   const [error404, setError404] = useState(false);
@@ -19,6 +19,7 @@ const DetailsComponent = () => {
     from: { opacity: 0, transform: "translateY(100%)" },
     to: { opacity: 1, transform: "translateY(0%)" },
     config: { duration: 800 },
+    onRest: () => setAnimationCompleted(true),
   });
 
   const { name } = useParams();
@@ -47,9 +48,9 @@ const DetailsComponent = () => {
     } else {
       fetchPokemon(name);
     }
-
-    // Imposta lo scroll in alto
-    window.scrollTo(0, 0);
+    
+    window.scrollTo(0, 0); // Imposta lo scroll in alto
+    setAnimationCompleted(false);
   }, []);
 
   const loadPokemonDetails = (pokemon) => {

@@ -8,7 +8,7 @@ import HeaderComponent from "./components/HeaderComponent";
 import BtnScrollToTop from "./components/BtnScrollToTop";
 import ActionComponent from "./components/ActionComponent";
 import LoadingCardsComponent from "./components/LoadingCardsComponent";
-import CardsComponent from "./components/CardComponent";
+import CardsComponent from "./components/CardsComponent";
 import DetailsComponent from "./components/DetailsComponent";
 import FooterComponent from "./components/FooterComponent";
 import NotFoundPageComponent from "./components/NotFoundPageComponent";
@@ -22,6 +22,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [pokemonCount, setPokemonCount] = useState(50); // all'avvio del sito voglio caricare solo 100 pokemon, poi ad ogni scroll ne carico 10 alla volta
   const [search, setSearch] = useState("");
+  const [animationCompleted, setAnimationCompleted] = useState(true);
 
   const max = 1025;
 
@@ -151,10 +152,15 @@ function App() {
             </>
           }
         />
-        <Route path="/details/:name" element={<DetailsComponent />} />
+        <Route
+          path="/details/:name"
+          element={
+            <DetailsComponent setAnimationCompleted={setAnimationCompleted} />
+          }
+        />
         <Route path="*" element={<NotFoundPageComponent />} />
       </Routes>
-      <FooterComponent />
+      {animationCompleted ? <FooterComponent /> : null}
     </BrowserRouter>
   );
 }
