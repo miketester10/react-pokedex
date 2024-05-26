@@ -173,7 +173,6 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .content {
   position: relative;
-
   width: auto;
   display: flex;
   color: #ffffff;

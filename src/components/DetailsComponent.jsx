@@ -99,10 +99,10 @@ const DetailsComponent = ({ setAnimationCompleted }) => {
   ) : error404 ? (
     <NotFoundPageComponent />
   ) : (
-    <animated.div className="content" style={slideAnimation}>
+    <animated.div style={slideAnimation}>
       <div
         className={styles.content}
-        style={{ border: `2px solid ${getColor(pokemonDetails.type)}` }}
+        style={{ border: `2px solid ${getColor(pokemonDetails.type)}`, minWidth: "808px" }}
       >
         <div className={styles.number}>{`#${pokemonDetails.id
           .toString()
@@ -118,7 +118,7 @@ const DetailsComponent = ({ setAnimationCompleted }) => {
               </div>
               <div
                 className={styles.name}
-                style={{ color: getColor(pokemonDetails.type) }}
+                style={{ color: getColor(pokemonDetails.type), minWidth: "360px" }}
               >
                 {getNameString(pokemonDetails.name)}
               </div>

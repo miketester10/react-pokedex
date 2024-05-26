@@ -67,7 +67,7 @@ const LoadingDetailsComponent = () => {
                       <Skeleton height={20} />
                     </div>
                     <div className={styles.base}>
-                      <Skeleton width={30} height={20} />
+                      <Skeleton width={26} height={20} />
                     </div>
                   </div>
                 ))}
